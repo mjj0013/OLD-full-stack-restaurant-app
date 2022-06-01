@@ -5,16 +5,23 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "@apollo/client": "^3.2.4",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.10.0",
+    "axios": "^0.21.0",
+    "graphql": "^15.3.0",
+    "isomorphic-fetch": "^3.0.0",
+    "js-cookie": "^2.2.1",
+    "next": "9.5.5",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "reactstrap": "^8.6.0"
   },
-  "devDependencies": {
-    "eslint": "8.16.0",
-    "eslint-config-next": "12.1.6"
-  }
+  "description": "Exercise05 is full Shopping Cart with Stripe Billing",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT"
 }
