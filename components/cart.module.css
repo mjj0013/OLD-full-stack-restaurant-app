@@ -1,0 +1,22 @@
+.cartWrapper {
+    display:grid;
+    
+
+    width:500px;
+
+}
+
+.cartIcon {
+    width:100px;
+    height:100px;
+    display:block;
+    /* position:absolute;
+    top:50px;
+    left:0px; */
+    /* background-image: url("data:image/svg+xml,"); */
+
+}
+
+
+
+

@@ -1,8 +1,16 @@
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import { Button, Card, CardBody, CardTitle, Badge } from "reactstrap";
+import {Container, Row, Col,  Button, Card, CardBody, CardGroup,CardTitle, Badge } from "reactstrap";
 import AppContext from "./context"
 import Link from "next/link"
+
+
+import styles from './cart.module.css'
+
+
+
+
+
 // we can pass cart data in via props method 
 // the alternative is using useContext as below
 function Cart() {
@@ -89,8 +97,10 @@ const checkoutItems = ()=>{
 
 // return Cart
   return (
-    <div>
+    <Card className={styles.cartWrapper}>
       <h1> Cart</h1>
+      
+      
       <Card style={{ padding: "10px 5px" }} className="cart">
         <CardTitle style={{ margin: 10 }}>Your Order:</CardTitle>
         <hr />
@@ -123,7 +133,8 @@ const checkoutItems = ()=>{
           color: rgba(97, 97, 97, 1);
         }
       `}</style>
-    </div>
+    </Card>
+    
   );
 }
 export default Cart;

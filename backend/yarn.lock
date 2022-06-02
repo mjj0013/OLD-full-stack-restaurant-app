@@ -11350,7 +11350,7 @@
     "pluralize" "^7.0.0"
     "shelljs" "^0.8.3"
 
-"strapi@3.0.0-beta.14":
+"strapi@^3.0.0-beta.14":
   "integrity" "sha512-6/5neEO9QnU1bG0D0ujyaguI1IfHa1IZVHZvvWOlnEUHutfpDP2OVGd7Qk7h9rtGOzQLJ0qMAdKL8TD1L22S6g=="
   "resolved" "https://registry.npmjs.org/strapi/-/strapi-3.0.0-beta.14.tgz"
   "version" "3.0.0-beta.14"

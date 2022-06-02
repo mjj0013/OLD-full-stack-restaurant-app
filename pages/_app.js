@@ -1,3 +1,6 @@
+import styles from "../styles/globals.css"
+import Cart from "../components/cart"
+
 import { useContext, useState } from "react";
 import Head from "next/head";
 import AppContext from "../components/context";
@@ -5,10 +8,17 @@ import Home from "./index"
 import Layout from "../components/layout"
 import Cookie from "js-cookie"
 
+import {Button, Card } from "reactstrap";
+
+const cartIcon = (color) => {
+  return (<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill={color} class='bi bi-cart3' viewBox='0 0 16 16'><path d='M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z'/></svg>)
+
+}
+
 
 function MyApp(props){
   var {cart,addItem,removeItem, user, setUser} = useContext(AppContext)
-  const [state,setState] = useState({cart:cart});
+  const [state,setState] = useState({cart:cart, cartShowing:false});
   const { Component, pageProps } = props;
   
   
@@ -82,21 +92,35 @@ function MyApp(props){
     setState({cart:newCart});
   }
 
+  var cartButtonClicked = (e) =>{
+    setState({...state, cartShowing:true});
+    document.getElementById('cartSideBar').classList.toggle('showing');
+    document.getElementById('cartSideBarHandle').classList.toggle('showing');
+  }
+
   return (
-    <AppContext.Provider value={{cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
+    <AppContext.Provider value={{cartShowing:state.cartShowing, cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
       <Head>
-        <link
-          rel="stylesheet"
+        <link rel="stylesheet" crossOrigin="anonymous"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossOrigin="anonymous"
         />
       </Head>
-    
+  
+
+       
+      <Button id="cartSideBarHandle" onClick={(e)=>cartButtonClicked(e)}>{cartIcon('white')}</Button>
+      
+
+
+      <Card id="cartSideBar">
+        <Cart></Cart>
+      </Card>
+
       <Layout>
           <Component {...pageProps} />
       </Layout>
-
+      
     </AppContext.Provider>
   );
   
