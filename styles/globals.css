@@ -1,11 +1,17 @@
+
 html,
 body {
+  --scrollVar:0;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+  overflow-x:hidden;
+  overflow-y:auto;
 
+  
+}
+/*  add a red (or green) tint */
 a {
   color: inherit;
   text-decoration: none;
@@ -13,4 +19,58 @@ a {
 
 * {
   box-sizing: border-box;
+}
+#cartSideBarHandle {
+  position:fixed;
+  display:block;
+  top:50%;
+  right:0%;
+
+  
+  width:75px;
+  height:75px;
+  -webkit-transform: initial;
+  transform: initial;
+  
+  transition: transform 500ms ease, opacity 500ms ease;
+  z-index:99;
+  opacity:50%;
+  border-style:inset;
+  border-top-left-radius: 125px 125px;
+  border-bottom-left-radius: 125px 125px;
+  /* direction:rtl; */
+}
+
+#cartSideBarHandle.showing {
+  -webkit-transform: translate3d(-250px, 0, 0);
+  transform: translate3d(-250px, 0, 0);
+  opacity:90%;
+}
+#cartSideBar {
+  position:fixed;
+  display:block;
+  top:56px;
+  right:-250px;
+  width:250px;
+  -webkit-transform: initial;
+  transform: initial;
+  height:100%;
+  transition: transform 500ms ease, opacity 500ms ease;
+  z-index:99;
+  opacity:50%;
+  /* border-style:inset;
+  border-start-end-radius: 150px 100px; */
+  /* direction:rtl; */
+}
+
+#cartSideBar.showing {
+  -webkit-transform: translate3d(-250px, 0, 0);
+  transform: translate3d(-250px, 0, 0);
+  opacity:90%;
+}
+
+header {
+  position:fixed;
+  width:100%;
+  background: hsl(220,var(--scrollVar), 25%);
 }

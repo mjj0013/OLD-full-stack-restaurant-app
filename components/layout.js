@@ -1,14 +1,32 @@
 /* /components/Layout.js */
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { Container, Nav, NavItem } from "reactstrap";
+import { Container, Nav, NavItem,Button } from "reactstrap";
 import AppContext from "./context";
 
 const Layout = (props) => {
-const title = "Welcome to Nextjs";
-const {user} = useContext(AppContext);
+
+  const [atPageTop, setAtPageTop] = useState(true)
+  const title = "Welcome to Nextjs";
+  window.onscroll = () => {
+    
+    document.body.style.setProperty('--scrollVar',  `${Math.round(100*window.pageYOffset/(window.innerHeight))}%`)    // document.body.offsetHeight-
+    
+    if(document.body.scrollTop > 20 || document.documentElement.scrollTop >20) {
+      
+      setAtPageTop(false)
+    }
+    else setAtPageTop(true)
+  }
+
+  function moveToPageTop() {
+    
+    window.scrollTo(0,0);
+  }
+
+  const {user} = useContext(AppContext);
   return (
     <div>
       <Head>
@@ -35,13 +53,25 @@ const {user} = useContext(AppContext);
             }
           `}
         </style>
-        <Nav className="navbar navbar-dark bg-dark">
+        <Nav className="navbar navbar-dark bg-dark" >
+
           <NavItem>
             <Link href="/">
               <a className="navbar-brand">Home</a>
             </Link>
           </NavItem>
+
+          
           <NavItem className="ml-auto">
+            {atPageTop ? (
+             null
+            ) : (
+              <Link href="/">
+                <button className="nav-link" onClick={moveToPageTop}>Search</button>
+              </Link>
+            )}
+          </NavItem>
+          <NavItem >
             {user ? (
               <h5>{user.username}</h5>
             ) : (

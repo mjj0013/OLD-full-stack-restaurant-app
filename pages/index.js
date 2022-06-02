@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import Cart from "../components/cart"
+// import Cart from "../components/cart"
 import {ApolloProvider,ApolloClient,HttpLink, InMemoryCache} from '@apollo/client';
 import RestaurantList from '../components/restaurantList';
-import { InputGroup, InputGroupAddon,Input} from "reactstrap";
+import { 
+    InputGroup, InputGroupAddon,Input,
+    ListGroup, ListGroupItem,
+    Carousel, CardGroup, Card, CardImg, CardBody} from "reactstrap";
 
 
 function Home() {
@@ -16,20 +19,18 @@ function Home() {
   
     return (
         <ApolloProvider client={client}>
-          <div className="search">
-              <h2> Local Restaurants</h2>
+            <div className="search">
+                <h2> Local Restaurants</h2>
                 <InputGroup >
                 <InputGroupAddon addonType="append"> Search </InputGroupAddon>
-                <Input
-                    onChange={(e) =>
-                    setQuery(e.target.value.toLocaleLowerCase())
-                    }
-                    value={query}
-                />
+                <Input  onChange={(e) =>setQuery(e.target.value.toLocaleLowerCase())} value={query}/>
                 </InputGroup><br></br>
             </div>
             <RestaurantList search={query} />
-            <Cart> </Cart>
+            <div id="d" style={{display:"block",position:"absolute",top:"120%", left:"0px", width:"50", height:"23"}}>asdf</div>
+            {/* <Cart></Cart> */}
+            
+           
         </ApolloProvider>
     );
   }
