@@ -10,16 +10,7 @@ const Layout = (props) => {
 
   const [atPageTop, setAtPageTop] = useState(true)
   const title = "Welcome to Nextjs";
-  window.onscroll = () => {
-    
-    document.body.style.setProperty('--scrollVar',  `${Math.round(100*window.pageYOffset/(window.innerHeight))}%`)    // document.body.offsetHeight-
-    
-    if(document.body.scrollTop > 20 || document.documentElement.scrollTop >20) {
-      
-      setAtPageTop(false)
-    }
-    else setAtPageTop(true)
-  }
+  
 
   function moveToPageTop() {
     

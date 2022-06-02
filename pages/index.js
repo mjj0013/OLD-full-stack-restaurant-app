@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {ApolloProvider,ApolloClient,HttpLink, InMemoryCache} from '@apollo/client';
 import RestaurantList from '../components/restaurantList';
 import { 
-    InputGroup, InputGroupAddon,Input,
+    InputGroup, InputGroupAddon,Input, Button,
     ListGroup, ListGroupItem,
     Carousel, CardGroup, Card, CardImg, CardBody} from "reactstrap";
 
@@ -22,8 +22,9 @@ function Home() {
             <div className="search">
                 <h2> Local Restaurants</h2>
                 <InputGroup >
-                <InputGroupAddon addonType="append"> Search </InputGroupAddon>
-                <Input  onChange={(e) =>setQuery(e.target.value.toLocaleLowerCase())} value={query}/>
+                    <InputGroupAddon addonType="append"> Search </InputGroupAddon>
+                    <Input id="searchField" onChange={(e) =>setQuery(e.target.value.toLocaleLowerCase())} value={query}/>
+                    <Button id="searchBtn"> Search </Button>
                 </InputGroup><br></br>
             </div>
             <RestaurantList search={query} />
