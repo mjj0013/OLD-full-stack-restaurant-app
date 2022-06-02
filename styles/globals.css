@@ -74,3 +74,28 @@ header {
   width:100%;
   background: hsl(220,var(--scrollVar), 25%);
 }
+.search {
+  display:block;
+  position:absolute;
+  top:40%;
+  width:30%;
+}
+
+#searchField {
+  border-radius: 25px;
+}
+#searchBtn {
+  border-color:#ffffff;
+  position:relative;
+  left:-5%;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  /* border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px; */
+  background:
+    radial-gradient(ellipse 25px 25px at -3%, transparent, transparent 25px, #888888 25px),
+    radial-gradient(ellipse 25px 25px at -3%, transparent, transparent 25px, #888888 25px);
+
+ 
+  background-repeat:no-repeat;
+}
