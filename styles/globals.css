@@ -9,6 +9,7 @@ body {
   overflow-x:hidden;
   overflow-y:auto;
 
+
   
 }
 /*  add a red (or green) tint */
@@ -38,7 +39,6 @@ a {
   border-style:inset;
   border-top-left-radius: 125px 125px;
   border-bottom-left-radius: 125px 125px;
-  /* direction:rtl; */
 }
 
 #cartSideBarHandle.showing {
@@ -69,33 +69,136 @@ a {
   opacity:90%;
 }
 
-header {
+.navbar{
   position:fixed;
   width:100%;
-  background: hsl(220,var(--scrollVar), 25%);
+  background: hsl(220,25%, 25%);
+  /* var(--scrollVar) */
 }
 .search {
   display:block;
   position:absolute;
   top:40%;
   width:30%;
+  padding: 10px 30px 20px 30px !important;
+
 }
 
 #searchField {
   border-radius: 25px;
+  z-index:50;
+  min-width:443px;
+  max-width:443px;
+  box-shadow:0px 5px 3px #303030;
 }
-#searchBtn {
-  border-color:#ffffff;
-  position:relative;
-  left:-5%;
+#searchCatSelector {
+  z-index:51;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
-  /* border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px; */
-  background:
-    radial-gradient(ellipse 25px 25px at -3%, transparent, transparent 25px, #888888 25px),
-    radial-gradient(ellipse 25px 25px at -3%, transparent, transparent 25px, #888888 25px);
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+#searchBtn {
+  z-index:51;
+  /* border-color:#ffffff; */
+  position:absolute;
+  left:400px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  box-shadow:0px 5px 3px #303030;
+}
+#homePageSectionGroup{
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+  top:56px;
+  left:0px;
+}
 
- 
-  background-repeat:no-repeat;
+
+
+/* .pageSection {
+  width:100%;
+  display:block;
+  height:100vh;
+} */
+
+
+.pageSection.sushi {
+  /* background:radial-gradient(ellipse at bottom right, #bbb 25% ,#ccc 60%, #eee 80%); */
+  /* margin:100px;
+  display:contents; */
+  --angle:0deg;
+  transition:--angle 1s;
+  background-image: repeating-conic-gradient(from var(--angle) at 50% 25%, 
+  #bbbeee 5deg 15deg ,
+  #ccceee 15deg 25deg, #ccceee 16deg 36deg,  #cddeee 17deg 37deg,#ceeeee 18deg 38deg,#cffeee 19deg 39deg,
+  #eeeeee 35deg 80deg);
+  /* repeating-linear-gradient(30deg, #bbbeee 25% ,#ccceee 30%, #ccceee,  #eeeeee); */
+
+  /* background-position:from 30deg at 0% 25%; */
+  
+}
+@property --angle {
+  syntax:"<angle>";
+  inherits:false;
+  initial-value:10deg;
+}
+
+.pageSection.sushi:hover {
+  --angle:60deg;
+}
+
+
+.pageSection.section1 {
+  background-image:repeating-radial-gradient(ellipse at top left, hsl(120,50%, 30%) 25% ,hsl(120,70%, 30%) 60%, hsl(120,80%, 30%) 80%);
+  background-size:200%;
+  background-position:0% 30%;
+  transition:background-position 1s ease;
+}
+
+.pageSection.section1:hover {
+  background-position:70% 60%;
+  /* background-image:"" */
+  /* M 5.075 2.894 C -4.592 1.419 4.715 -1.35 -4.985 -4.02 L 4.977 -4.021 L 5.042 2.959 */
+}
+
+
+
+
+
+.sectionCard  {
+  position:relative;
+  margin-top:auto;
+  margin-bottom:auto;
+  margin-left:auto;
+  margin-right:auto;
+  /* margin-right:20%; */
+  
+  width:80%; 
+  height:80%;
+}
+.sectionCardImage {
+  display:block;
+  width:100%; 
+  height:100%;
+  filter:blur(5px);
+}
+
+
+.sushiPlateImage {
+  width:100%;
+  height:100%;
+}
+.noodleImage {
+  width:50%;
+  height:50%;
+}
+
+.imageCarousel {
+  width:50%;
+  height:60%;
 }
