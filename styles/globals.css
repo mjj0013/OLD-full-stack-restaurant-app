@@ -157,9 +157,12 @@ a {
   /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='45'%3E%3Cpath d='M10 10h60' stroke='%2300F' stroke-width='5'/%3E%3Cpath d='M10 20h60' stroke='%230F0' stroke-width='5'/%3E%3Cpath d='M10 30h60' stroke='red' stroke-width='5'/%3E%3C/svg%3E"); */
   /* background-size:500%;
   */
-  background-size:100%;
+  background-size:200%;
   background-position:-250px -250px; 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='lightFilter'%3E%3CfeDiffuseLighting result='light2' lighting-color='white'%3E%3CfePointLight x='900' y='562' z='1'/%3E%3C/feDiffuseLighting%3E%3CfeComposite in='SourceGraphic' in2='light2' operator='arithmetic' k1='0' k2='1' k3='1' k4='0'/%3E%3C/filter%3E%3Crect filter='url(%23lightFilter)' x='0' y='0' width='100%' height='100%' fill='hsl(220,75%, 30%)' /%3E%3C/svg%3E");
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='lightFilter'%3E%3CfeDiffuseLighting result='light2' lighting-color='white'%3E%3CfePointLight x='900' y='562' z='1'/%3E%3C/feDiffuseLighting%3E%3CfeComposite in='SourceGraphic' in2='light2' operator='arithmetic' k1='0' k2='1' k3='1' k4='0'/%3E%3C/filter%3E%3Crect filter='url(%23lightFilter)' x='0' y='0' width='100%' height='100%' fill='hsl(220,75%, 30%)' /%3E%3C/svg%3E"); */
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='lightFilter'%3E%3CfeDiffuseLighting result='light2' lighting-color='white'%3E%3CfePointLight x='800' y='562' z='20'/%3E%3C/feDiffuseLighting%3E%3CfeComposite in='SourceGraphic' in2='light2' operator='arithmetic' k1='1' k2='1' k3='1' k4='0'/%3E%3C/filter%3E%3Crect filter='url(%23lightFilter)' x='0' y='0' width='100%' height='100%' fill='hsl(220,75%, 30%)' /%3E%3C/svg%3E");
+
   background-repeat: repeat;
   transition: background-position 1s ease;
 }
@@ -229,32 +232,85 @@ a {
 
 
 
-.gridRect {
+
+
+
+
+.gridRect:nth-child(n):nth-child(-n+5),.gridRect:nth-child(n+66):nth-child(-n+70), .gridRect:nth-child(5n) {
+  fill:hsl(220,75%, 33%);
+  
+
+  /* -webkit-transform: skewX(30deg);
+  transform: skewX(30deg); */
+}
+
+.gridRect:nth-child(n+6):nth-child(-n+9),.gridRect:nth-child(n+61):nth-child(-n+64), .gridRect:nth-child(5n-1) {
+  fill:hsl(220,75%, 38%);
+  /* -webkit-transform: skewX(30deg);
+  transform: skewX(30deg); */
+}
+.gridRect:nth-child(n+11):nth-child(-n+13),.gridRect:nth-child(n+56):nth-child(-n+58), .gridRect:nth-child(5n-2) {
+  fill:hsl(220, 75%, 45%);
+  /* -webkit-transform: skewX(30deg);
+  transform: skewX(30deg); */
+}
+.gridRect:nth-child(n+16):nth-child(-n+17),.gridRect:nth-child(n+51):nth-child(-n+52), .gridRect:nth-child(5n-3) {
   fill:hsl(220,75%, 40%);
-  box-shadow: 5px 5px 50px #000000;
-  /* perspective: 5.5cm; */
+  /* -webkit-transform: skewX(30deg);
+  transform: skewX(30deg); */
+}
+.gridRect:nth-child(n+21):nth-child(-n+21),.gridRect:nth-child(n+46):nth-child(-n+46), .gridRect:nth-child(5n-4) {
+  fill:hsl(220,75%, 45%);
+  /* -webkit-transform: skewX(30deg);
+  transform: skewX(30deg); */
+  
 }
 
+/* .gridRect:nth-child(5n-4) {
+  transition:transform 1s ease;
+} */
 
-.gridRect:nth-child(n):nth-child(-n+10) {
-  fill:hsl(220,75%, 32%);
+
+/* .gridRect:nth-child(n):nth-child(-n+5) {
+  fill:hsl(220,75%, 33%);
 }
-.gridRect:nth-child(n+11):nth-child(-n+20) {
+.gridRect:nth-child(n+6):nth-child(-n+10) {
+  fill:hsl(220,75%, 34%);
+}
+.gridRect:nth-child(n+6):nth-child(-n+15) {
   fill:hsl(220, 75%, 35%);
 }
-.gridRect:nth-child(n+21):nth-child(-n+30) {
+.gridRect:nth-child(n+11):nth-child(-n+20) {
+  fill:hsl(220, 75%, 38%);
+}
+.gridRect:nth-child(n+21):nth-child(-n+25) {
   fill:hsl(220,75%, 40%);
 }
-.gridRect:nth-child(n+31):nth-child(-n+40) {
+.gridRect:nth-child(n+21):nth-child(-n+30) {
+  fill:hsl(220,75%, 43%);
+}
+.gridRect:nth-child(n+31):nth-child(-n+40)  {
   fill:hsl(220,75%, 45%);
+}
+.gridRect:nth-child(n+41):nth-child(-n+45) {
+  fill:hsl(220,75%, 43%);
 }
 .gridRect:nth-child(n+41):nth-child(-n+50) {
   fill:hsl(220,75%, 40%);
 }
+.gridRect:nth-child(n+51):nth-child(-n+55) {
+  fill:hsl(220,75%, 38%);
+}
 .gridRect:nth-child(n+51):nth-child(-n+60) {
   fill:hsl(220,75%, 35%);
 }
-.gridRect:nth-child(n+61):nth-child(-n+70) {
-  fill:hsl(220,75%, 32%);
+.gridRect:nth-child(n+61):nth-child(-n+65) {
+  fill:hsl(220,75%, 34%);
 }
+.gridRect:nth-child(n+61):nth-child(-n+70) {
+  fill:hsl(220,75%, 33%);
+} */
+
+
+
 
