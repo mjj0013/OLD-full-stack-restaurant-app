@@ -80,8 +80,8 @@ function Home() {
                         
                         <g id="gridSquares">
                             {
-                                svgGridIndices.y.map(y=>{
-                                    return svgGridIndices.x.map(x=>{
+                                svgGridIndices.x.map(x=>{
+                                    return svgGridIndices.y.map(y=>{
                                         return( <rect className="gridRect" x={x*100+5} y={y*100+5} width={90} height={90} />)
                                     })
                                 })
