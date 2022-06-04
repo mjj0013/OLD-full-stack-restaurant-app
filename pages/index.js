@@ -41,6 +41,13 @@ function Home() {
 
      // <img className="noodleImage" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Noodles_2.png" 
     
+    var svgGridIndices = {
+        x:Array(14).fill(0).map((x,i)=> {return x+i}),
+        y:Array(5).fill(0).map((x,i)=> {return x+i}),
+    }
+    // svgGridIndices = svgGridIndices
+    
+
     return (
         <ApolloProvider client={client}>
             {/* <div className="search">
@@ -52,8 +59,35 @@ function Home() {
             
 
             <ListGroup id="homePageSectionGroup">
-                <ListGroupItem className="pageSection section1">
-                  
+
+
+                <ListGroupItem className="pageSection background">
+                    
+                    <svg id="backgroundSection0" className="section0">
+                        {/* <filter id="lightFilter">
+                            <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="hsl(220, 50%, 80%)">
+                                <fePointLight x="800" y="200" z="150" />
+                            </feDiffuseLighting>
+                            <feSpecularLighting result="light2" specularExponent="2" lighting-color="white">
+                                <fePointLight x="50" y="50" z="150" />
+                            </feSpecularLighting>
+                            <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+                        </filter>
+                        <rect filter="url(#lightFilter)" id="gridBackground" x={0} y={0} width={svgGridIndices.x.length*100} height={svgGridIndices.y.length*100} />
+                             */}
+                        
+                       
+                        
+                        <g id="gridSquares">
+                            {
+                                svgGridIndices.y.map(y=>{
+                                    return svgGridIndices.x.map(x=>{
+                                        return( <rect className="gridRect" x={x*100+5} y={y*100+5} width={90} height={90} />)
+                                    })
+                                })
+                            }
+                        </g>
+                    </svg>                  
                 </ListGroupItem>
                 <ListGroupItem className="pageSection section1">
                     <Card className="sectionCard">

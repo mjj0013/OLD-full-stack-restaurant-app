@@ -120,11 +120,11 @@ a {
 
 
 
-/* .pageSection {
+.pageSection {
   width:100%;
   display:block;
   height:100vh;
-} */
+}
 
 
 .pageSection.sushi {
@@ -150,6 +150,28 @@ a {
 
 .pageSection.sushi:hover {
   --angle:60deg;
+}
+
+.pageSection.background {
+  /* background-image:url(#gridBackground); */
+  /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='45'%3E%3Cpath d='M10 10h60' stroke='%2300F' stroke-width='5'/%3E%3Cpath d='M10 20h60' stroke='%230F0' stroke-width='5'/%3E%3Cpath d='M10 30h60' stroke='red' stroke-width='5'/%3E%3C/svg%3E"); */
+  /* background-size:500%;
+  background-position:0% 0%; */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='lightFilter'%3E%3CfeSpecularLighting result='light2' specularExponent='25' lighting-color='white'%3E%3CfePointLight x='70%' y='50%' z='150'/%3E%3C/feSpecularLighting%3E%3CfeComposite in='SourceGraphic' in2='light' operator='arithmetic' k1='0' k2='1' k3='1' k4='0'/%3E%3C/filter%3E%3Crect filter='url(%23lightFilter)' x='0' y='0' width='100%' height='100%' fill='blue' /%3E%3C/svg%3E");
+  
+  /* filter:url(#lightFilter); */
+  transition: background-position 1s ease;
+}
+
+/* .pageSection.background:hover {
+  background-position:-50% 50%;
+} */
+
+.pageSection .section0 {
+  width:100%;
+  height:100%;
+
+  
 }
 
 
@@ -201,4 +223,17 @@ a {
 .imageCarousel {
   width:50%;
   height:60%;
+}
+
+#gridBackground {
+  fill:hsl(220,75%, 40%);
+}
+
+.gridRect {
+  fill:hsl(220,75%, 40%);
+}
+
+
+.gridRect:nth-child(n+1) {
+  opacity:.5;
 }
