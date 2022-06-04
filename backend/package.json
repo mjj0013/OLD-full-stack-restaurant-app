@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.0.0-alpha.9",
     "knex": "^2.1.0",
     "lodash": "^4.17.21",
     "sqlite3": "^5.0.8",
