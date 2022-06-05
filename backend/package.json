@@ -19,9 +19,12 @@
   },
   "dependencies": {
     "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0-alpha.9",
     "knex": "^2.1.0",
     "lodash": "^4.17.21",
+    "sass": "^1.52.2",
+    "sass-loader": "^10.1.1",
     "sqlite3": "^5.0.8",
     "strapi": "3.0.0-beta.14",
     "strapi-admin": "3.0.0-beta.14",
@@ -29,14 +32,13 @@
     "strapi-hook-knex": "3.0.0-beta.14",
     "strapi-plugin-content-manager": "3.0.0-beta.14",
     "strapi-plugin-content-type-builder": "3.0.0-beta.14",
-    "strapi-plugin-email":"3.0.0-beta.14",
+    "strapi-plugin-email": "3.0.0-beta.14",
     "strapi-plugin-graphql": "3.0.0-beta.14",
     "strapi-plugin-settings-manager": "3.0.0-beta.14",
     "strapi-plugin-upload": "3.0.0-beta.14",
     "strapi-plugin-users-permissions": "3.0.0-beta.14",
     "strapi-utils": "3.0.0-beta.14",
-    "stripe": "^9.6.0",
-    "style-loader": "^3.3.1"
+    "stripe": "^9.6.0"
   },
   "author": {
     "name": "A Strapi developer + updates john R Williams jrw@mit.edu"
