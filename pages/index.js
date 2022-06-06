@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 // import Cart from "../components/cart"
 import {ApolloProvider,ApolloClient,HttpLink, InMemoryCache} from '@apollo/client';
 import RestaurantList from '../components/restaurantList';
@@ -7,6 +7,8 @@ import {
     ListGroup, ListGroupItem,ButtonDropdown, 
     UncontrolledCarousel, CardGroup, Card, CardImg, CardBody} from "reactstrap";
 import styles from "../styles/Home.module.css"
+// import { useEffect } from "react/cjs/react.production.min";
+
 
 
 const getSearchIcon = () => {
@@ -45,8 +47,8 @@ function Home() {
      // <img className="noodleImage" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Noodles_2.png" 
     
     var svgGridIndices = {
-        x:Array(14).fill(0).map((x,i)=> {return x+i}),
-        y:Array(5).fill(0).map((x,i)=> {return x+i}),
+        x:Array(7).fill(0).map((x,i)=> {return x+i}),
+        y:Array(7).fill(0).map((x,i)=> {return x+i}),
     }
     // svgGridIndices = svgGridIndices
     
@@ -65,6 +67,16 @@ function Home() {
         "https://upload.wikimedia.org/wikipedia/commons/1/11/Cheeseburger.png"
 
     ]
+    // var iter = 0;
+    // useEffect(()=> {
+    //     document.addEventListener("mousedown",()=> {
+    //         var style = getComputedStyle(document.body);
+    //         console.log(window.getComputedStyle(document.documentElement).getPropertyValue('--grideShadeIter'))
+    //         // document.documentElement.style.setProperty('--grideShadeIter', `${32+iter*2}%`)
+    //         // ++iter;
+    //     }, false )
+    // })
+
 
     return (
         <ApolloProvider client={client}>
@@ -74,14 +86,21 @@ function Home() {
            
             {/* <div id="d" style={{display:"block",position:"absolute",top:"120%", left:"0px", width:"50", height:"23"}}>asdf</div> */}
            
-            
+           
 
-            <ListGroup id="homePageSectionGroup">
+            <ListGroup id="homePageSectionGroup" flush={true}>
 
 
-                <ListGroupItem className="pageSection background">
-                    
-                    <svg id="backgroundSection0" className="section0">
+                <ListGroupItem className="pageSection section0">
+                        <div className="search">
+                            <h2>Local Restaurants</h2>
+                            <InputGroup >
+                                <Input className="searchField" onChange={(e) =>setQuery(e.target.value.toLocaleLowerCase())} value={query}/>
+                                <Button className="searchBtn" outline={true}> {getSearchIcon()} </Button>
+                            </InputGroup><br></br>
+                            <RestaurantList search={query} />
+                        </div>
+                    <svg id="backgroundSection0">
                         {/* <filter id="lightFilter">
                             <feDiffuseLighting in="SourceGraphic" result="light" lighting-color="hsl(220, 50%, 80%)">
                                 <fePointLight x="800" y="200" z="150" />
@@ -93,9 +112,33 @@ function Home() {
                         </filter>
                         <rect filter="url(#lightFilter)" id="gridBackground" x={0} y={0} width={svgGridIndices.x.length*100} height={svgGridIndices.y.length*100} />
                              */}
+                             
+                        <defs>
+                            
+                            <filter id='lightFilter'>
+                                <feDiffuseLighting result='light2' lighting-color='white' >
+                                    <fePointLight x='100' y='250' z='145'/>
+                                </feDiffuseLighting>
+                                <feComposite in='SourceGraphic' in2='light2' operator='in' />
+                            </filter>
+                        </defs>
+                        
+                        <rect  x='0' y='0' width='100%' height='100%' fill='hsl(var(--hueSection0),75%, 30%)' />
+                        <linearGradient id="pathGrad" >
+                                <stop offset="20%" stop-color='hsl(var(--hueSection0), 75%, 30%)' ></stop>
+                                    
+                                <stop offset="80%" stop-color='hsl(var(--hueSection0), 75%, 80%)' >
+                                    
+                                </stop>
+                                <animateTransform attributeName="gradientTransform" type="rotate" attributeType="XML" values="0 0; 360 360" dur="4s" repeatCount="indefinite"  />
+                            </linearGradient>
+                        <path id="path1" fill={"url(#pathGrad)"}  d='M 580.128 450.409 v -100 h -105 v 105 h 5.422 v -100 h 95 v 95 v 205 h 305 v -505 h -5 v 500 h -295 V 451.335'>
+                             
+                             
+                        </path>
                         
                        
-                        
+                        {/*  M 580.19 455.17 v -105 h -105 v 105 h 5 v -100 h 95 v 100 z */}
                         <g id="gridSquares">
                             {
                                 svgGridIndices.x.map(x=>{
@@ -107,11 +150,7 @@ function Home() {
                                             <g className="gridShape">
                                                 
                                                 <rect className="gridRect" x={x*100+5} y={y*100+5} width={90} height={90} />
-                                                {randomImg? 
-                                                <image x={x*100+22.5} y={y*100+22.5} height={45} width={45} href={randomImg} />: null}
-                                                
-                                                {/* <image x={x*100+5} y={y*100+5} height={90} width={90} href="https://upload.wikimedia.org/wikipedia/commons/0/0b/Noodles_2.png" /> */}
-                                                {/* <image x={x*100+5} y={y*100+5} height={60} width={60} href="https://upload.wikimedia.org/wikipedia/commons/c/c1/Filet-O-Fish_transparent.png" /> */}
+                                                {randomImg? <image x={x*100+22.5} y={y*100+22.5} height={45} width={45} href={randomImg} />: null}
                                             </g>
                                         
                                         )
@@ -119,24 +158,20 @@ function Home() {
                                 })
                             }
                         </g>
-                    </svg>                  
+                    </svg>
+                                      
                 </ListGroupItem>
                 <ListGroupItem className="pageSection section1">
                     <Card className="sectionCard">
-                    <div className="search">
-                        <h2>Local Restaurants</h2>
-                        <InputGroup >
-                            <ButtonDropdown id="searchCatSelector"></ButtonDropdown>
-                            
-                            <Input id="searchField" onChange={(e) =>setQuery(e.target.value.toLocaleLowerCase())} value={query}/>
-                            <Button id="searchBtn" outline={true}> {getSearchIcon()} </Button>
-                        </InputGroup><br></br>
-                        <RestaurantList search={query} />
-                    </div>
-                        
-                        <CardImg className="sectionCardImage" src="https://upload.wikimedia.org/wikipedia/commons/3/35/SimpleRestaurantMinsk.jpg">
-                        
-                        </CardImg>
+                        <div className="search">
+                            <h2>Local Restaurants</h2>
+                            <InputGroup >
+                                <Input className="searchField" onChange={(e) =>setQuery(e.target.value.toLocaleLowerCase())} value={query}/>
+                                <Button className="searchBtn" outline={true}> {getSearchIcon()} </Button>
+                            </InputGroup><br></br>
+                            <RestaurantList search={query} />
+                        </div>
+                        <CardImg className="sectionCardImage" src="https://upload.wikimedia.org/wikipedia/commons/3/35/SimpleRestaurantMinsk.jpg"></CardImg>
                     </Card>
 
                 </ListGroupItem>

@@ -8,8 +8,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   overflow-x:hidden;
   overflow-y:auto;
-
+  --homeGridX: calc(100vw/100);
+  --homeGridY: calc(100vh);
+  --homeGridRectLen: 100px;
   
+
+  --hueSection0 :0;
+  /* --hueSection1 :0; */
   
 }
 /*  add a red (or green) tint */
@@ -73,7 +78,7 @@ a {
   position:fixed;
   z-index:100;
   width:100%;
-  background: hsl(220,25%, 25%);
+  background: hsl(var(--hueSection0),25%, 25%);
   /* var(--scrollVar) */
 }
 .search {
@@ -85,7 +90,7 @@ a {
 
 }
 
-#searchField {
+.searchField {
   border-radius: 25px;
   z-index:50;
   min-width:443px;
@@ -99,7 +104,7 @@ a {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
 }
-#searchBtn {
+.searchBtn {
   z-index:51;
   /* border-color:#ffffff; */
   position:absolute;
@@ -121,10 +126,7 @@ a {
   
 }
 
-
-
 .pageSection {
-  
   width:100%;
   display:block;
   height:100vh;
@@ -152,39 +154,47 @@ a {
   initial-value:10deg;
 }
 
+
+@property --pathProg1_1 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:5%;
+}
+
+
+
+
+/* #path1 {
+  animation-name:pathAnim;
+  animation-duration:5s;
+  animation-iteration-count: infinite;
+} */
+
 .pageSection.sushi:hover {
   --angle:60deg;
 }
 
-.pageSection.background {
-  /* background-image:url(#gridBackground); */
-  /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='45'%3E%3Cpath d='M10 10h60' stroke='%2300F' stroke-width='5'/%3E%3Cpath d='M10 20h60' stroke='%230F0' stroke-width='5'/%3E%3Cpath d='M10 30h60' stroke='red' stroke-width='5'/%3E%3C/svg%3E"); */
-  /* background-size:500%;
-  */
-  /* background-size:200%;
-  background-position:-250px -250px;  */
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='lightFilter'%3E%3CfeDiffuseLighting result='light2' lighting-color='white' %3E%3CfePointLight x='100' y='250' z='145'/%3E%3C/feDiffuseLighting%3E%3CfeComposite in='SourceGraphic' in2='light2' operator='in' /%3E%3C/filter%3E%3Crect  x='0' y='0' width='100%' height='100%' fill='hsl(220,75%, 30%)' /%3E%3Cpath filter='url(%23lightFilter)' d='M 120 0 l 0 500 c 40 40 40 160 80 80 c 40 -80 80 -40 120 40 c 40 80 40 200 40 240 c 2.86 15.52 5.84 13.52 9.34 -0.4 c -1 -287.68 -111.5 -405.16 -170.22 -294.64 c -33.36 70.64 -49.78 -63.72 -71.68 -63.72 l -0.96 -500.88 z' fill='hsla(220, 50%, 50%,.3)' /%3E%3C/svg%3E"); 
-  
-  
-  
+#gridSquares {
 
-  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='lightFilter'%3E%3CfeDiffuseLighting result='light2' lighting-color='white'%3E%3CfePointLight x='800' y='562' z='20'/%3E%3C/feDiffuseLighting%3E%3CfeComposite in='SourceGraphic' in2='light2' operator='arithmetic' k1='1' k2='1' k3='1' k4='0'/%3E%3C/filter%3E%3Crect x='0' y='0' width='100%' height='100%' fill='hsl(220,75%, 30%)' /%3E%3C/svg%3E"); */
-
-  background-repeat: repeat;
-  transition: background-position 1s ease;
+  --xShift: calc(50vw - 367.5px);
+  --yShift: calc(50vh - 367.5px);
+  transform:translate(var(--xShift), var(--yShift));
 }
+
 
 /* .pageSection.background:hover {
   background-position: -1000px -250px;
 
 } */
 
-.pageSection .section0 {
+#backgroundSection0 {
+  /* margin-left: calc(100vw-100px);
+  margin-right:calc(100vw-100px); */
+ 
+  
   width:100%;
   height:100%;
-  
-  
 }
 
 .pageSection.section1 {
@@ -237,50 +247,222 @@ a {
   transform: translateZ(50px);
 } */
 
-
-.gridShape:nth-child(n):nth-child(-n+5) .gridRect,.gridShape:nth-child(n+66):nth-child(-n+70) .gridRect, .gridShape:nth-child(5n) .gridRect{
-  fill:hsl(220,75%, 32%);
-}
-
-.gridShape:nth-child(n+6):nth-child(-n+9) .gridRect,.gridShape:nth-child(n+61):nth-child(-n+64) .gridRect, .gridShape:nth-child(5n-1) .gridRect{
-  fill:hsl(220,75%, 34%);
+/* .gridShape:nth-child(7n-6) .gridRect, */
+/* .gridShape:nth-child(6n-5) .gridRect, .gridShape:nth-child(6n-4) .gridRect, .gridShape:nth-child(6n-3) .gridRect{
  
-}
-.gridShape:nth-child(n+11):nth-child(-n+13) .gridRect,.gridShape:nth-child(n+56):nth-child(-n+58) .gridRect, .gridShape:nth-child(5n-2) .gridRect{
-  fill:hsl(220, 75%, 36%);
+  fill:hsl(var(--hueSection0),75%, 32%);
+} */
 
+
+@property --gridShade1 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:32%;
 }
-.gridShape:nth-child(n+16):nth-child(-n+17) .gridRect,.gridShape:nth-child(n+51):nth-child(-n+52) .gridRect, .gridShape:nth-child(5n-3) .gridRect {
-  fill:hsl(220,75%, 38%);
- 
+@property --gridShade2 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:34%;
 }
-.gridShape:nth-child(n+21):nth-child(-n+21) .gridRect,.gridShape:nth-child(n+46):nth-child(-n+46) .gridRect,  .gridShape:nth-child(5n-4) .gridRect{
-  fill:hsl(220,75%, 40%); 
+@property --gridShade3 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:36%;
 }
+@property --gridShade4 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:38%;
+}
+@property --gridShade5 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:40%;
+}
+@property --gridShade6 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:42%;
+}
+@property --gridShade7 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:44%;
+}
+@property --gridShade8 {
+  syntax:"<percentage>";
+  inherits:false;
+  initial-value:46%;
+}
+@keyframes gridAnim {
+  0% {
+    --gridShade1: 32% ;
+    --gridShade2: 34% ;
+    --gridShade3: 36% ;
+    --gridShade4: 38% ;
+    --gridShade5: 40% ;
+    --gridShade6: 42% ;
+    --gridShade7: 44% ;
+    --gridShade8: 46%;
+  }
+  12.5% {
+    --gridShade1: 46% ;
+    --gridShade2: 32% ;
+    --gridShade3: 34% ;
+    --gridShade4: 36% ;
+    --gridShade5: 38% ;
+    --gridShade6: 40% ;
+    --gridShade7: 42% ;
+    --gridShade8: 44%;
+  }
+  25% {
+    --gridShade1: 44% ;
+    --gridShade2: 46% ;
+    --gridShade3: 32% ;
+    --gridShade4: 34% ;
+    --gridShade5: 36% ;
+    --gridShade6: 38% ;
+    --gridShade7: 40% ;
+    --gridShade8: 42%;
+  }
+  37.5% {
+    --gridShade1: 42% ;
+    --gridShade2: 44% ;
+    --gridShade3: 46% ;
+    --gridShade4: 32% ;
+    --gridShade5: 34% ;
+    --gridShade6: 36% ;
+    --gridShade7: 38% ;
+    --gridShade8: 40%;
+  }
+  50% {
+    --gridShade1: 40% ;
+    --gridShade2: 42% ;
+    --gridShade3: 44% ;
+    --gridShade4: 46% ;
+    --gridShade5: 32% ;
+    --gridShade6: 34% ;
+    --gridShade7: 36% ;
+    --gridShade8: 38%;
+  }
+  62.5% {
+    --gridShade1: 38% ;
+    --gridShade2: 40% ;
+    --gridShade3: 42% ;
+    --gridShade4: 44% ;
+    --gridShade5: 46% ;
+    --gridShade6: 32% ;
+    --gridShade7: 34% ;
+    --gridShade8: 36%;
+  }
+  75% {
+    --gridShade1: 36% ;
+    --gridShade2: 38% ;
+    --gridShade3: 40% ;
+    --gridShade4: 42% ;
+    --gridShade5: 44% ;
+    --gridShade6: 46% ;
+    --gridShade7: 32% ;
+    --gridShade8: 34%;
+  }
+  87.5% {
+    --gridShade1: 34% ;
+    --gridShade2: 36% ;
+    --gridShade3: 38% ;
+    --gridShade4: 40% ;
+    --gridShade5: 42% ;
+    --gridShade6: 44% ;
+    --gridShade7: 46% ;
+    --gridShade8: 32%;
+  }
+  
+  
+  
+}
+
+
+.gridShape:nth-child(8n-8) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade1));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-7) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade2));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-6) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade3));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-5) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade4));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-4) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade5));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-3) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade6));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-2) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade7));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+.gridShape:nth-child(8n-1) .gridRect {
+  fill:hsl(var(--hueSection0),75%, var(--gridShade8));
+  animation-name:gridAnim;
+  animation-duration:1s;
+  animation-iteration-count: infinite;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 .gridShape:nth-child(n):nth-child(-n+5) image,.gridShape:nth-child(n+66):nth-child(-n+70) image, .gridShape:nth-child(5n) image{
-  filter:drop-shadow(0px 0px 14px hsl(220, 69%, 40%)) brightness(50%);
+  filter:drop-shadow(0px 0px 14px hsl(var(--hueSection0), 69%, 40%)) brightness(50%);
 }
 
 .gridShape:nth-child(n+6):nth-child(-n+9) image,.gridShape:nth-child(n+61):nth-child(-n+64) image, .gridShape:nth-child(5n-1) image{
   
-  filter:drop-shadow(0px 0px 14px hsl(220, 69%, 42%)) brightness(60%);
+  filter:drop-shadow(0px 0px 14px hsl(var(--hueSection0), 69%, 42%)) brightness(60%);
  
 }
 .gridShape:nth-child(n+11):nth-child(-n+13) image,.gridShape:nth-child(n+56):nth-child(-n+58) image, .gridShape:nth-child(5n-2) image{
-  filter:drop-shadow(0px 0px 14px hsl(220, 69%, 44%)) brightness(70%);
+  filter:drop-shadow(0px 0px 14px hsl(var(--hueSection0), 69%, 44%)) brightness(70%);
 
 }
 .gridShape:nth-child(n+16):nth-child(-n+17) image,.gridShape:nth-child(n+51):nth-child(-n+52) image, .gridShape:nth-child(5n-3) image {
-  filter:drop-shadow(0px 0px 14px hsl(220, 69%, 46%)) brightness(80%);
+  filter:drop-shadow(0px 0px 14px hsl(var(--hueSection0), 69%, 46%)) brightness(80%);
  
 }
 .gridShape:nth-child(n+21):nth-child(-n+21) image,.gridShape:nth-child(n+46):nth-child(-n+46) image,  .gridShape:nth-child(5n-4) image{
-  filter: drop-shadow(0px 0px 14px hsl(220, 69%, 48%)) brightness(90%);
+  filter: drop-shadow(0px 0px 14px hsl(var(--hueSection0), 69%, 48%)) brightness(90%);
 }
 
 /* .gridRect:nth-child(5n-4) {
