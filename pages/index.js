@@ -16,6 +16,11 @@ const getSearchIcon = () => {
         </svg>
     )
 }
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
 
 function Home() {
     const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
@@ -34,9 +39,7 @@ function Home() {
         {
     altText:"Card image", src:"https://upload.wikimedia.org/wikipedia/commons/7/73/Cruise_boat_and_restaurant.jpg",key:2
         },
-
-
-                       
+           
     */
 
      // <img className="noodleImage" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Noodles_2.png" 
@@ -47,6 +50,21 @@ function Home() {
     }
     // svgGridIndices = svgGridIndices
     
+
+    var transparentBackgroundFood = [
+        null,
+        null,
+        null,
+        "https://upload.wikimedia.org/wikipedia/commons/7/7b/Sushi_roll.png",
+        "https://upload.wikimedia.org/wikipedia/commons/0/0b/Noodles_2.png",
+        "https://upload.wikimedia.org/wikipedia/commons/c/c1/Filet-O-Fish_transparent.png",
+        "https://upload.wikimedia.org/wikipedia/commons/5/5e/Spinach_leaves.png",
+        "https://upload.wikimedia.org/wikipedia/commons/0/04/Rhubarb_pie.png",
+        "https://upload.wikimedia.org/wikipedia/commons/f/f0/Kinder_Joy.png",
+        "https://upload.wikimedia.org/wikipedia/commons/3/34/3_fried_eggs.png",
+        "https://upload.wikimedia.org/wikipedia/commons/1/11/Cheeseburger.png"
+
+    ]
 
     return (
         <ApolloProvider client={client}>
@@ -81,8 +99,22 @@ function Home() {
                         <g id="gridSquares">
                             {
                                 svgGridIndices.x.map(x=>{
+                                    
                                     return svgGridIndices.y.map(y=>{
-                                        return( <rect className="gridRect" x={x*100+5} y={y*100+5} width={90} height={90} />)
+                                        var randomIdx = getRandomInt(0, transparentBackgroundFood.length);
+                                        var randomImg = transparentBackgroundFood[randomIdx];
+                                        return( 
+                                            <g className="gridShape">
+                                                
+                                                <rect className="gridRect" x={x*100+5} y={y*100+5} width={90} height={90} />
+                                                {randomImg? 
+                                                <image x={x*100+22.5} y={y*100+22.5} height={45} width={45} href={randomImg} />: null}
+                                                
+                                                {/* <image x={x*100+5} y={y*100+5} height={90} width={90} href="https://upload.wikimedia.org/wikipedia/commons/0/0b/Noodles_2.png" /> */}
+                                                {/* <image x={x*100+5} y={y*100+5} height={60} width={60} href="https://upload.wikimedia.org/wikipedia/commons/c/c1/Filet-O-Fish_transparent.png" /> */}
+                                            </g>
+                                        
+                                        )
                                     })
                                 })
                             }
