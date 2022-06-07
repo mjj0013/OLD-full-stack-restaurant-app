@@ -21,11 +21,11 @@
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0-alpha.9",
-    "knex": "^2.1.0",
-    "lodash": "^4.17.21",
-    "sass": "^1.52.2",
-    "sass-loader": "^10.1.1",
-    "sqlite3": "^5.0.8",
+
+    "knex": "^0.21.6",
+    "lodash": "^4.17.5",
+    
+    "sqlite3": "^5.0.0",
     "strapi": "3.0.0-beta.14",
     "strapi-admin": "3.0.0-beta.14",
     "strapi-hook-bookshelf": "3.0.0-beta.14",
@@ -38,7 +38,7 @@
     "strapi-plugin-upload": "3.0.0-beta.14",
     "strapi-plugin-users-permissions": "3.0.0-beta.14",
     "strapi-utils": "3.0.0-beta.14",
-    "stripe": "^9.6.0"
+    "stripe": "^8.109.0"
   },
   "author": {
     "name": "A Strapi developer + updates john R Williams jrw@mit.edu"
@@ -47,7 +47,7 @@
     "uuid": "a45046ad-52e3-426c-a7aa-25c5de132bfe"
   },
   "engines": {
-    "node": ">=12.0.0",
+    "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
