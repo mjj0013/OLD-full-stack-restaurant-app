@@ -124,18 +124,16 @@ function Home() {
                         </defs>
                         
                         <rect  x='0' y='0' width='100%' height='100%' fill='hsl(var(--hueSection0),75%, 30%)' />
-                        <linearGradient id="pathGrad" >
+                        {/* <linearGradient id="pathGrad" >
                                 <stop offset="20%" stop-color='hsl(var(--hueSection0), 75%, 30%)' ></stop>
                                     
                                 <stop offset="80%" stop-color='hsl(var(--hueSection0), 75%, 80%)' >
                                     
                                 </stop>
                                 <animateTransform attributeName="gradientTransform" type="rotate" attributeType="XML" values="0 0; 360 360" dur="4s" repeatCount="indefinite"  />
-                            </linearGradient>
+                        </linearGradient>
                         <path id="path1" fill={"url(#pathGrad)"}  d='M 580.128 450.409 v -100 h -105 v 105 h 5.422 v -100 h 95 v 95 v 205 h 305 v -505 h -5 v 500 h -295 V 451.335'>
-                             
-                             
-                        </path>
+                        </path> */}
                         
                        
                         {/*  M 580.19 455.17 v -105 h -105 v 105 h 5 v -100 h 95 v 100 z */}
